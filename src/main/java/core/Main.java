@@ -1,6 +1,7 @@
 package core;
 
 import listeners.readyListener;
+import listeners.voiceListener;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -20,6 +21,7 @@ public class Main
         builder.setStatus(OnlineStatus.ONLINE);
 
         builder.addEventListener(new readyListener());
+        builder.addEventListener(new voiceListener());
 
         try {
             JDA jda = builder.buildBlocking();
