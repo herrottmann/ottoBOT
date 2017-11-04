@@ -1,5 +1,6 @@
 package core;
 
+import listeners.readyListener;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -17,6 +18,8 @@ public class Main
         builder.setToken(SECRETS.TOKEN);
         builder.setAutoReconnect(true);
         builder.setStatus(OnlineStatus.ONLINE);
+
+        builder.addEventListener(new readyListener());
 
         try {
             JDA jda = builder.buildBlocking();
