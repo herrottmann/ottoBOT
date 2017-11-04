@@ -1,5 +1,7 @@
 package core;
 
+import commands.cmdPing;
+import listeners.commandListener;
 import listeners.readyListener;
 import listeners.voiceListener;
 import net.dv8tion.jda.core.AccountType;
@@ -13,6 +15,8 @@ import javax.security.auth.login.LoginException;
 
 public class Main
 {
+    public static JDABuilder builder;
+
     public static void main(String[] Args)
     {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
@@ -20,8 +24,11 @@ public class Main
         builder.setAutoReconnect(true);
         builder.setStatus(OnlineStatus.ONLINE);
 
+        addCommands();
+
         builder.addEventListener(new readyListener());
         builder.addEventListener(new voiceListener());
+        builder.addEventListener(new commandListener());
 
         try {
             JDA jda = builder.buildBlocking();
@@ -32,5 +39,10 @@ public class Main
         } catch (RateLimitedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void addCommands()
+    {
+        commandHandler.commands.put("ping", new cmdPing());
     }
 }
