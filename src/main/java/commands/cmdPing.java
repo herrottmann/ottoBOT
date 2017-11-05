@@ -1,6 +1,7 @@
 package commands;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import core.permsCore;
 
 public class cmdPing implements Command
 {
@@ -12,7 +13,13 @@ public class cmdPing implements Command
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getTextChannel().sendMessage("Pong...").queue();
+        /*
+        if(permsCore.check(event))
+        {
+            return;
+        }
+        */
+        event.getTextChannel().sendMessage("Halt dein Maul...").queue();
     }
 
     @Override

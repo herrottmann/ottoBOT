@@ -1,5 +1,6 @@
 package core;
 
+import commands.cmdClear;
 import commands.cmdPing;
 import listeners.commandListener;
 import listeners.readyListener;
@@ -44,5 +45,6 @@ public class Main
     public static void addCommands()
     {
         commandHandler.commands.put("ping", new cmdPing());
+        commandHandler.commands.put("clear", new cmdClear());
     }
 }
